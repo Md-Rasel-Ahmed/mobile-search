@@ -9,7 +9,9 @@ let releaseDate = document.getElementById("releaseDate");
 let showDetails = document.getElementById("showDetails");
 let spinner = document.getElementById("spinnner");
 let showAll = document.getElementById("showAll");
-let notFounded = document.querySelector(".notFounded");
+let notFounded = document.querySelector("#notFounded");
+
+// ADD evenet listener
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (inputField.value === "") {
@@ -20,8 +22,9 @@ form.addEventListener("submit", (e) => {
   }
   inputField.value = "";
   spinner.style.display = "block";
-  // phoneDetails();
+  document.querySelector(".results").style.display = "block";
 });
+// load data from API
 const loadData = () => {
   fetch(
     `https://openapi.programming-hero.com/api/phones?search=${inputField.value}`
@@ -29,21 +32,25 @@ const loadData = () => {
     .then((res) => res.json())
     .then((data) => {
       displayData(data.data.slice(0, 20));
-      // phoneDetails(data.data.slug);
     })
     .catch((error) => {
       notFounded.style.display = "block";
       console.log(error);
     });
 };
-// loadData();
+// Display data showing function
 const displayData = (data) => {
-  // console.log(data.slice(0, 20));
+  console.log(data.length);
+  if (data.length <= 0) {
+    notFounded.style.display = "block";
+    document.querySelector(".results").style.display = "none";
+    showDetails.style.display = "none";
+  } else {
+    notFounded.style.display = "none";
+  }
   spinner.style.display = "none";
   row.textContent = "";
-  // console.log(data);
   data.forEach((phone) => {
-    // console.log(phone);
     let div = document.createElement("div");
     div.classList.add("col-lg-4");
     div.innerHTML = `
@@ -67,7 +74,9 @@ const displayData = (data) => {
   });
 };
 
+// Phone details showing function
 const phoneDetails = (id) => {
+  // api calling from the phone id
   let url = `https://openapi.programming-hero.com/api/phone/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -77,7 +86,7 @@ const phoneDetails = (id) => {
       if (data.data.releaseDate) {
         releaseDate.textContent = data.data.releaseDate;
       } else {
-        releaseDate.textContent = "Release Date don,t have";
+        releaseDate.textContent = "No release date has been given yet";
       }
       // main features
       mainFeatures(`chipSet`, data.data.mainFeatures.chipSet);
@@ -90,7 +99,7 @@ const phoneDetails = (id) => {
         sensors += " ," + allSensors;
       });
       document.getElementById("sensor").textContent = sensors;
-      // others
+      // others details
       if (data.data?.others) {
         others("Bluetooth", data.data.others.Bluetooth);
         others("GPS", data.data.others.GPS);
@@ -110,10 +119,12 @@ const phoneDetails = (id) => {
   showDetails.style.display = "block";
 };
 
+// main features function
 const mainFeatures = (id, text) => {
   let feature = (document.getElementById(id).textContent = text);
   return feature;
 };
+// others features function
 const others = (id, text) => {
   let others = (document.getElementById(id).textContent = text);
   return others;

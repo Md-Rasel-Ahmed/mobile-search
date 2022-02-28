@@ -6,6 +6,9 @@
   width: 150px;
   margin: 0 auto;
 }
-.notFounded {
+#notFounded {
+  display: none;
+}
+.results {
   display: none;
 }
