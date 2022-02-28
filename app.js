@@ -108,12 +108,12 @@ const phoneDetails = (id) => {
         others("USB", data.data.others.USB);
         others("WLAN", data.data.others.WLAN);
       } else {
-        others("Bluetooth", "Not founded!!");
-        others("GPS", "Not founded!!");
-        others("NFC", "Not founded!!");
-        others("Radio", "Not founded!!");
-        others("USB", "Not founded!!");
-        others("WLAN", "Not founded!!");
+        others("Bluetooth", "Don,t have!!");
+        others("GPS", "Don,t have!!");
+        others("NFC", "Don,t have!!");
+        others("Radio", "Don,t have!!");
+        others("USB", "Don,t have!!");
+        others("WLAN", "Don,t have!!");
       }
     });
   showDetails.style.display = "block";
