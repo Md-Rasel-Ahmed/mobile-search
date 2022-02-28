@@ -24,29 +24,52 @@
             </div>
         </form>
 
+<button id="spinnner" class="btn btn-primary py-2" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+</button>
+<h2 class="notFounded text-danger text-center py-2">Results not founded!!!</h2>
 
 
 
-        <div class="container">
-            <div class="showDetails d-flex justify-content-ceneter m-2">
-                <img id="detailsImg"src="" alt="">
+
+       <div class="container" id="showDetails">
+            <div class="d-flex justify-content-center flex-lg-row  flex-sm-column-reverse gap-5">
+                <img id="detailsImg"src="" alt="" class="img-fluid h-75 m-auto">
                <div>
                     <p> Releases data :<strong id="releaseDate"></strong></p>
-                    <h5>Main Features</h5>
-                     <p>chipSet :<strong id="chipSet"></strong> </p>
-                     <p>displaySize :<strong id="displaySize"></strong> </p>
-                     <p>memory :<strong id="memory"></strong> </p>
-                     <p>storage :<strong id="storage"></strong> </p>
+                    <div>
+                        <h3>Main Features</h3>
+                        <p>chipSet :<strong id="chipSet"></strong> </p>
+                        <p>displaySize :<strong id="displaySize"></strong> </p>
+                        <p>memory :<strong id="memory"></strong> </p>
+                        <p>storage :<strong id="storage"></strong> </p>
+                    </div>
+                    <div>
+                        <h3>Sensors</h3>
+                        <strong id="sensor"></strong>
+                    </div>
+                    <div>
+                        <h3>Others</h3>
+                        <p>Bluetooth :<strong id="Bluetooth"></strong> </p>
+                        <p>GPS :<strong id="GPS"></strong> </p>
+                        <p>NFC :<strong id="NFC"></strong> </p>
+                        <p>Radio :<strong id="Radio"></strong> </p>
+                        <p>USB :<strong id="USB"></strong> </p>
+                        <p>WLAN :<strong id="WLAN"></strong> </p>
+                    </div>
                </div>
             </div>
+            <hr>
         </div>
-<hr>
+
 
 
       <div class="container">
           <div class="row">
              
           </div>
+          <button id="showAll">Show all</button>
       </div>
 
 

@@ -1,0 +1,11 @@
+#showDetails {
+  display: none;
+}
+#spinnner {
+  display: none;
+  width: 150px;
+  margin: 0 auto;
+}
+.notFounded {
+  display: none;
+}
