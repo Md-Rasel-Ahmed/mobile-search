@@ -32,10 +32,6 @@ const loadData = () => {
     .then((res) => res.json())
     .then((data) => {
       displayData(data.data.slice(0, 20));
-    })
-    .catch((error) => {
-      notFounded.style.display = "block";
-      console.log(error);
     });
 };
 // Display data showing function
