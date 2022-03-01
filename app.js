@@ -85,6 +85,7 @@ const phoneDetails = (id) => {
       detailsImg.src = data.data.image;
       if (data.data.releaseDate) {
         releaseDate.textContent = data.data.releaseDate;
+        document.querySelector("#detialsName").textContent = data.data.name;
       } else {
         releaseDate.textContent = "No release date has been given yet";
       }
