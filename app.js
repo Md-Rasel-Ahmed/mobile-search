@@ -40,7 +40,6 @@ const loadData = () => {
 };
 // Display data showing function
 const displayData = (data) => {
-  console.log(data.length);
   if (data.length <= 0) {
     notFounded.style.display = "block";
     document.querySelector(".results").style.display = "none";
@@ -83,9 +82,9 @@ const phoneDetails = (id) => {
     .then((data) => {
       console.log(data.data);
       detailsImg.src = data.data.image;
+      document.querySelector("#detialsName").textContent = data.data.name;
       if (data.data.releaseDate) {
         releaseDate.textContent = data.data.releaseDate;
-        document.querySelector("#detialsName").textContent = data.data.name;
       } else {
         releaseDate.textContent = "No release date has been given yet";
       }
