@@ -8,7 +8,6 @@ let detailsImg = document.getElementById("detailsImg");
 let releaseDate = document.getElementById("releaseDate");
 let showDetails = document.getElementById("showDetails");
 let spinner = document.getElementById("spinnner");
-let showAll = document.getElementById("showAll");
 let notFounded = document.querySelector("#notFounded");
 
 // ADD evenet listener
@@ -31,21 +30,59 @@ const loadData = () => {
   )
     .then((res) => res.json())
     .then((data) => {
-      displayData(data.data.slice(0, 20));
+      displayData(data.data);
     });
 };
+
 // Display data showing function
 const displayData = (data) => {
+  let allData = data.length;
+  // console.log(data);
+  let prevData = data.slice(0, 20);
+  let lastData = data.slice(20);
+  // showAll button click start
+  document.querySelector(".showAll").addEventListener("click", () => {
+    lastData.forEach((last) => {
+      let div = document.createElement("div");
+      div.classList.add("col-lg-4");
+      div.innerHTML = `
+                  <div class="card m-2 p-2">
+                      <div class="card-img">
+                          <img id="phone-img" src="${last.image}" alt="phone img" class="img-fluid w-50 mx-auto d-block">
+                      </div>
+                      <div class="card-body text-center">
+                          <div class="card-title">
+                              <h5>Name : <span  id="phone-name">${last.phone_name}</span></h5>
+                              <h5>Brand :<span  id="phone-name">${last.brand}</span></h5>
+                      
+                      <button onclick="phoneDetails('${last.slug}')" type="button" class="btn btn-primary">
+                                Details
+                         </button>
+                         <div/>
+                         <div/>
+                  
+    `;
+      row.appendChild(div);
+      if (prevData.length + lastData.length === allData) {
+        document.querySelector(".showAll").style.display = "none";
+      }
+    });
+  });
+  // Show all button end;
+
+  // condition cheking
   if (data.length <= 0) {
     notFounded.style.display = "block";
     document.querySelector(".results").style.display = "none";
     showDetails.style.display = "none";
+  } else if (data.length > 20) {
+    document.querySelector(".showAll").style.display = "block";
   } else {
     notFounded.style.display = "none";
   }
   spinner.style.display = "none";
   row.textContent = "";
-  data.forEach((phone) => {
+  data.slice(0, 20).forEach((phone) => {
     let div = document.createElement("div");
     div.classList.add("col-lg-4");
     div.innerHTML = `

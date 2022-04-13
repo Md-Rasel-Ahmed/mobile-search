@@ -20,3 +20,6 @@ form {
 .results {
   display: none;
 }
+.showAll {
+  display: none;
+}

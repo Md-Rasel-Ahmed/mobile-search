@@ -70,6 +70,7 @@
 
 
         <!-- All mobile show in the card  -->
+       
       <div class="container">
           <h2 class="text-center text-primary results py-1">RESULTS</h2>
           <div class="row">
@@ -77,6 +78,10 @@
              
           </div>
       </div>
+     <!-- Show all button -->
+       <div style="margin:0 auto; width:150px;">
+            <button class="btn btn-primary showAll my-4">Show all</button>
+       </div>
 
 
 
@@ -85,6 +90,11 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="./app.js"></script>
+    <script>
+        document.addEventListener("contextmenu",(e)=>{
+          e.preventDefault();
+        })
+    </script>
 </body>
 
 </html>
